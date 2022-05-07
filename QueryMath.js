@@ -18,6 +18,28 @@ class QueryMath {
 			? values[middle]
 			: (values[middle - 1] + values[middle]) / 2;
 	}
+	mode() {
+		const mode_data = this.array.reduce(
+			(mode_accum, val) => {
+				if (val !== mode_accum.mode) {
+					const val_count = this.find_number_of_elements(
+						this.array,
+						val
+					);
+					if (val_count > mode_accum.mode_count) {
+						mode_accum.mode = val;
+						mode_accum.mode_count = val_count;
+					}
+				}
+				return mode_accum;
+			},
+			{ mode: null, mode_count: 0 }
+		);
+		return mode_data.mode;
+	}
+	find_number_of_elements(array, val) {
+		return array.filter((el) => el === val).length;
+	}
 }
 
 module.exports = QueryMath;
