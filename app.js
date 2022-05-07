@@ -16,6 +16,12 @@ app.get("/median", (req, res) => {
 	return res.json({ response });
 });
 
+app.get("/mode", (req, res) => {
+	const nums = new QueryMath(req.query.nums);
+	response = { operation: "mode", value: nums.mode() };
+	return res.json({ response });
+});
+
 app.listen(3000, () => {
 	console.log("Server started on port 3000.");
 });
