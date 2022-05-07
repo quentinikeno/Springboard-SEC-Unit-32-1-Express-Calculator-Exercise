@@ -1,8 +1,8 @@
 class QueryMath {
 	constructor(nums) {
-		this.array = this.createArray(nums);
+		this.array = this.create_array(nums);
 	}
-	createArray(nums) {
+	create_array(nums) {
 		return nums.split(",").map((num) => {
 			let int = parseInt(num);
 			if (isNaN(int)) {
@@ -29,10 +29,7 @@ class QueryMath {
 		const mode_data = this.array.reduce(
 			(mode_accum, val) => {
 				if (val !== mode_accum.mode) {
-					const val_count = this.find_number_of_elements(
-						this.array,
-						val
-					);
+					const val_count = this.find_number_of_elements(val);
 					if (val_count > mode_accum.mode_count) {
 						mode_accum.mode = val;
 						mode_accum.mode_count = val_count;
@@ -44,8 +41,8 @@ class QueryMath {
 		);
 		return mode_data.mode;
 	}
-	find_number_of_elements(array, val) {
-		return array.filter((el) => el === val).length;
+	find_number_of_elements(val) {
+		return this.array.filter((el) => el === val).length;
 	}
 }
 
