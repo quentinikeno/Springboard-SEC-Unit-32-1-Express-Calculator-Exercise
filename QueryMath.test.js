@@ -6,6 +6,19 @@ beforeAll(() => {
 	test2 = new QueryMath("1,3,5,7,9");
 });
 
+describe("create_array method", () => {
+	it("creates an array from a string of numbers", () => {
+		expect(test2.array).toEqual([1, 3, 5, 7, 9]);
+	});
+});
+
+describe("find_number_of_elements method", () => {
+	it("finds the number of elements in the array", () => {
+		expect(test.find_number_of_elements(4)).toEqual(2);
+		expect(test2.find_number_of_elements(3)).toEqual(1);
+	});
+});
+
 describe("mean method", () => {
 	it("calculates the mean", () => {
 		expect(test.mean()).toEqual(5);
