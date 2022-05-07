@@ -3,7 +3,14 @@ class QueryMath {
 		this.array = this.createArray(nums);
 	}
 	createArray(nums) {
-		return nums.split(",").map((num) => parseInt(num));
+		return nums.split(",").map((num) => {
+			let int = parseInt(num);
+			if (isNaN(int)) {
+				throw `${num} must be a number`;
+			} else {
+				return int;
+			}
+		});
 	}
 	mean() {
 		return (
