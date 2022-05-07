@@ -4,10 +4,15 @@ const QueryMath = require("./QueryMath");
 
 app.use(express.json());
 
-// mean
 app.get("/mean", (req, res) => {
 	const nums = new QueryMath(req.query.nums);
 	response = { operation: "mean", value: nums.mean() };
+	return res.json({ response });
+});
+
+app.get("/median", (req, res) => {
+	const nums = new QueryMath(req.query.nums);
+	response = { operation: "median", value: nums.median() };
 	return res.json({ response });
 });
 
